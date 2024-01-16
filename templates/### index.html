@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Interactive Pandas DataFrame Website</title>
+</head>
+<body>
+<h1>Interactive Pandas DataFrame Website</h1>
+
+<p>This website provides an interactive interface to a pandas DataFrame. You can filter and sort the data, and view the results in a tabular format.</p>
+
+<form action="/filter" method="post">
+<label for="filter_column">Filter by column:</label>
+<select name="filter_column">
+<option value="column1">Column 1</option>
+<option value="column2">Column 2</option>
+<option value="column3">Column 3</option>
+</select>
+
+<label for="filter_value">Filter value:</label>
+<input type="text" name="filter_value">
+
+<input type="submit" value="Filter">
+</form>
+
+<form action="/sort" method="post">
+<label for="sort_column">Sort by column:</label>
+<select name="sort_column">
+<option value="column1">Column 1</option>
+<option value="column2">Column 2</option>
+<option value="column3">Column 3</option>
+</select>
+
+<label for="sort_order">Sort order:</label>
+<select name="sort_order">
+<option value="asc">Ascending</option>
+<option value="desc">Descending</option>
+</select>
+
+<input type="submit" value="Sort">
+</form>
+
+<table border="1">
+<thead>
+<tr>
+<th>Column 1</th>
+<th>Column 2</th>
+<th>Column 3</th>
+</tr>
+</thead>
+<tbody>
+{% for row in df.itertuples() %}
+<tr>
+<td>{{ row.column1 }}</td>
+<td>{{ row.column2 }}</td>
+<td>{{ row.column3 }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</body>
+</html>
+
+
